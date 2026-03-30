@@ -1,0 +1,11 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+C3,10µF,CP_Radial_D5.0mm_P2.00mm,201.051088,-76.8604,0,top
+DS1,OLED_128X64_1.3_I2C,LCD_OLED_128X64_1.3_I2C,172.2374,-67.6237,0,top
+J1,Micro_SD_Card,J_SD_Card-micro_socket_A,214.5538,-87.4776,-90,top
+J2,AudioJack3,Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal,216.082,-60.2488,-90,top
+R5,10kΩ,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,214.249,-72.3646,180,top
+R6,10kΩ,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,206.9338,-98.5774,0,top
+SW1,SW_Push,SW_Cherry_MX_1.00u_PCB,155.7274,-89.3064,0,top
+SW2,SW_Push,SW_Cherry_MX_1.00u_PCB,174.7774,-89.3064,0,top
+SW3,SW_Push,SW_Cherry_MX_1.00u_PCB,193.7766,-89.3064,0,top
+SW4,RotaryEncoder_Switch,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,116.6766,-90.464,0,top

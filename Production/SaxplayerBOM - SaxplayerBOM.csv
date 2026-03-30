@@ -1,0 +1,12 @@
+Id,Designator,Footprint,Quantity,Comment,Supplier and ref
+1,"SW2,SW1,SW3",SW_Cherry_MX_1.00u_PCB,3,SW_Push,
+2,J1,J_SD_Card-micro_socket_A,1,Micro_SD_Card,
+3,DS1,LCD_OLED_128X64_1.3_I2C,1,OLED_128X64_1.3_I2C,
+4,"R6,R5,R1,R2",R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,4,10kΩ,
+5,J2,Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal,1,AudioJack3,
+6,C3,CP_Radial_D5.0mm_P2.00mm,1,10µF,
+7,SW4,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,1,RotaryEncoder_Switch,
+8,"C5,C4",C_Disc_D3.0mm_W1.6mm_P2.50mm,2,0.1uF,
+9,"C2,C1",C_Disc_D5.0mm_W2.5mm_P5.00mm,2,10µF,
+10,"R3,R4",R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,2,4.7kΩ,
+11,U1,ESP32-DevKitC,1,ESP32-DevKitC,
