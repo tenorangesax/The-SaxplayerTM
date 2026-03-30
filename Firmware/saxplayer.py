@@ -13,9 +13,9 @@ define SCREEN_HEIGHT 64
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-AudioGeneratorMP3 *mp3;
-AudioFileSourceSD *file;
-AudioOutputI2S *out;
+AudioGeneratorMP3 *mp3 = nullptr;
+AudioFileSourceSD *file = nullptr;
+AudioOutputI2S *out = nullptr;
 
 const int btn1 = 32;
 const int btn2 = 33;
@@ -90,15 +90,16 @@ void setup() {
 
   attachInterrupt(digitalPinToInterrupt(encA), readEncoder, CHANGE);
 
-  Wire.begin();
+  Wire.begin(21, 22);
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
   display.display();
 
-  SPI.begin();
+  SPI.begin(18, 19, 23, 5);
   SD.begin(5);
 
   out = new AudioOutputI2S();
+  out->SetPinout(26, 25, 22);
   out->begin();
 
   readFiles();
@@ -111,6 +112,7 @@ void loop() {
     encoderPos = 0;
     drawUI();
   }
+
   if (encoderPos < 0) {
     currentTrack = (currentTrack - 1 + fileCount) % fileCount;
     encoderPos = 0;
