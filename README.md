@@ -1,6 +1,12 @@
 # The-SaxplayerTM
 This is my own sample demo project for my tutorial to soon be posted on stasis! It is a little advanced mp3 player using a ESP32-WROOM, a headphone jack, an oled, a microsd card slot, and 3 buttons/keyswitches.
 
+
+**DESCRIPTION OF THE INTERNALS:**
+My Saxplayer is a bare bones PCB that houses a ESP32-WROOM for the microcontroller, 3 MX-Style keyboard switches for navigation, a rotary encoder switch for adjusting the volume with a knob, a microsd card slot for storing your music, and a audio jack for headphones.
+
+
+
 **THE FINAL PREVIEW:**
 <img width="1024" height="582" alt="Back_final" src="https://github.com/user-attachments/assets/ac5ef5e7-c8e6-4056-918b-5217ff58426f" />
 <img width="1024" height="582" alt="Front_Final" src="https://github.com/user-attachments/assets/44d0cc21-26c2-4791-9414-cd3ce01752a8" />
@@ -18,7 +24,4 @@ This is my own sample demo project for my tutorial to soon be posted on stasis! 
 <img width="1115" height="701" alt="Screenshot 2026-04-18 at 4 41 53 PM" src="https://github.com/user-attachments/assets/90c0088d-9942-4e6f-b16a-170a50bcf6f0" />
 <img width="1115" height="701" alt="Screenshot 2026-04-18 at 4 41 45 PM" src="https://github.com/user-attachments/assets/dbeb5399-4b97-4662-b16c-1732b34e60ba" />
 <img width="1115" height="663" alt="Screenshot 2026-04-18 at 4 41 21 PM" src="https://github.com/user-attachments/assets/9a9e935e-7990-4103-b0f3-113f440e5df0" />
-
-**DESCRIPTION OF THE INTERNALS:**
-My Saxplayer is a bare bones PCB that houses a ESP32-WROOM for the microcontroller, 3 MX-Style keyboard switches for navigation, a rotary encoder switch for adjusting the volume with a knob, a microsd card slot for storing your music, and a audio jack for headphones.
 
