@@ -17,7 +17,8 @@ My Saxplayer is a bare bones PCB that houses a ESP32-WROOM for the microcontroll
 <img width="1479" height="946" alt="schematic" src="https://github.com/user-attachments/assets/cb34f801-f0a0-4f20-907a-e024a205919c" />
 
 **PCB EDITOR:**
-<img width="932" height="389" alt="the components" src="https://github.com/user-attachments/assets/cc252789-7ed4-4566-85f0-8c62cc39ac86" />
+<img width="1599" height="737" alt="Screenshot 2026-07-05 at 7 09 38 PM" src="https://github.com/user-attachments/assets/a65f455c-3dc8-4be4-9b36-e9bb97b1a639" />
+
 
 **THE CASE:**
 <img width="1285" height="663" alt="Screenshot 2026-04-18 at 4 40 20 PM" src="https://github.com/user-attachments/assets/b339ce5d-e74f-4c7a-9b3f-5e3e41a5086f" />
