@@ -19,7 +19,6 @@ The Saxplayer™ is a device that houses a ESP32E for the microcontroller, a OLE
 
 <img width="1024" height="582" alt="Back_final" src="https://github.com/user-attachments/assets/ac5ef5e7-c8e6-4056-918b-5217ff58426f" />
 <img width="1024" height="582" alt="Front_Final" src="https://github.com/user-attachments/assets/44d0cc21-26c2-4791-9414-cd3ce01752a8" />
-<img width="1115" height="663" alt="Screenshot 2026-04-18 at 4 41 21 PM" src="https://github.com/user-attachments/assets/476bf4e6-a1a6-4115-ae9f-b8b1bbcc4d21" />
 
 
 **THE SCHEMATIC:**
