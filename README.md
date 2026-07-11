@@ -1,5 +1,5 @@
 # The-SaxplayerTM
-My Saxplayer is a device that houses a ESP32-S3 for the microcontroller, a OLED display to see what songs are playing, 3 MX-Style keyboard switches for navigation of songs, a rotary encoder switch for adjusting the volume and navigating menus, a microsd card slot for storing your music, and a audio jack for headphones or output to speakers! Also has a cool case I made along with it!. (Being displayed at Opensauce!)
+My Saxplayer is a device that houses a ESP32E for the microcontroller, a OLED display to see what songs are playing, 3 MX-Style keyboard switches for navigation of songs, a rotary encoder switch for adjusting the volume and navigating menus, a microsd card slot for storing your music, and a audio jack for headphones or output to speakers! Also has a cool case I made along with it!. (Being displayed at Opensauce!)
 
 
 
