@@ -79,7 +79,6 @@ so that the sound would come out right and less garbled. I figured out that plug
 
 On the display, I had a setting where it would show an equalizer with the song title and artist, and the buttons were so that if you held the back/forwards button, it would accelerate in the song, like an iPod.
 <img width="964" height="642" alt="IMG_7605" src="https://github.com/user-attachments/assets/3fa727a0-2a7f-4bab-a598-e8427093abb8" />
-<img width="853" height="629" alt="IMG_7606" src="https://github.com/user-attachments/assets/3e9da101-01cb-4547-9f85-e2e7c35e1fbf" />
 <img width="867" height="674" alt="IMG_7604" src="https://github.com/user-attachments/assets/2e332109-bb66-4035-b6c7-70f2e6a27d38" />
 
 On the homepage, it shows all the songs, and a settings menu.
