@@ -41,11 +41,20 @@ When the new ESP32 and OLED arrived, I soldered it, made some test code, and eve
 I had to adjust the code a lot, since there was a lot of noise, mainly electrical, and got it to reduce a ton. The other issues were the pitch, so I had to also tweak some things
 so that the sound would come out right and less garbled. I figured out that plugging this into a speaker worked best, which is perfect for Opensauce to display!
 
-On the display, I had a setting where it would show an equalizer with the song title and artist, and the buttons were so that if you held the back/forwards button, it would
-accelerate in the song, like an iPod.
+On the display, I had a setting where it would show an equalizer with the song title and artist, and the buttons were so that if you held the back/forwards button, it would accelerate in the song, like an iPod.
 <img width="964" height="642" alt="IMG_7605" src="https://github.com/user-attachments/assets/3fa727a0-2a7f-4bab-a598-e8427093abb8" />
-<img width="853" height="629" alt="IMG_7606" src="https://github.com/user-attachments/assets/3e9da101-01cb-4547-9f85-e2e7c35e1fbf" />
 <img width="867" height="674" alt="IMG_7604" src="https://github.com/user-attachments/assets/2e332109-bb66-4035-b6c7-70f2e6a27d38" />
+
+On the homepage, it shows all the songs, and a settings menu.
+
+
+<img width="913" height="629" alt="IMG_7626" src="https://github.com/user-attachments/assets/73bda66e-e675-4a23-b641-aa326d2dde50" />
+
+
+In the settings menu, I made it so that you could toggle if you wanted the equalizer or not, and if you wanted the display to sleep or not. When the display has to move less or display nothing at all, the sound quality increases because of the I2C traffic.
+
+
+<img width="1011" height="658" alt="IMG_7627" src="https://github.com/user-attachments/assets/8b1a126d-9fa6-4c0d-b83c-346d1244edbf" />
 
 
 Lastly, I also added some keycaps from my keyboard to give more color, swabbed the flux away to be cleaner, got an SD card with songs, and did the demo!
@@ -58,7 +67,6 @@ I will take it with me anyhow.
 <img width="3024" height="4032" alt="IMG_7609" src="https://github.com/user-attachments/assets/9655b063-0bd2-44d5-95a6-5ba2435475d2" />
 <img width="3024" height="4032" alt="IMG_7610" src="https://github.com/user-attachments/assets/84cbc88b-516c-4968-b196-b6b496979a41" />
 <img width="3024" height="4032" alt="IMG_7611" src="https://github.com/user-attachments/assets/a79b16d5-6cee-4ae0-83de-94e274c2ab4a" />
-
 
 
 # 4/18/2026 9 PM - Made the final case
