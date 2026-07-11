@@ -55,11 +55,11 @@ Apparently, on the oleds I used, the pins were GND, VCC, SCL, then SDA. The foot
 fried and start to heat up.
 <img width="327" height="147" alt="PNG image 2" src="https://github.com/user-attachments/assets/e99069fa-47b6-4c85-8d82-55e7dbf603dd" />
 
-<img width="922" height="582" alt="PNG image" src="https://github.com/user-attachments/assets/52c743f3-ec40-4ce8-aaef-82f263de80bd" />
 <img width="1100" height="1100" alt="61C2CYciYYL _SL1100_" src="https://github.com/user-attachments/assets/ca42c885-f526-4c5b-a7ec-3d8617a5087b" />
 
 I then ordered a new ESP32 and OLED since I tried for hours trying to desolder the ESP32 to no avail. The OLED I bought had the VCC and then GND so I wouldn't have to
 solder any wires or put additonal stuff on my board.
+<img width="922" height="582" alt="PNG image" src="https://github.com/user-attachments/assets/52c743f3-ec40-4ce8-aaef-82f263de80bd" />
 
 I made two boards in the meantime, one with the stuff that I knew worked(the switches, headphone jack and SD card), and one with more experimental things.
 On the experimental board, for the rotary encoder, I put 0 ohm resistors to act as a wire instead of the capacitors, since I researched and found out that the
