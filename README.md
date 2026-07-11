@@ -40,7 +40,7 @@ My Saxplayer is a device that houses a ESP32E for the microcontroller, a OLED di
 -->
 
 
-# 7/11/2026 12 PM - Made the final case
+# 7/11/2026 12 PM - Finishing touches and submisson!
 
 _Time spent: 9.3h_
 
