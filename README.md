@@ -1,9 +1,7 @@
 # The-SaxplayerTM
-This is my own sample demo project for my tutorial to soon be posted on stasis! It is a little advanced mp3 player using a ESP32-WROOM, a headphone jack, an oled, a microsd card slot, and 3 buttons/keyswitches.
+My Saxplayer is a device that houses a ESP32-S3 for the microcontroller, a OLED display to see what songs are playing, 3 MX-Style keyboard switches for navigation of songs, a rotary encoder switch for adjusting the volume and navigating menus, a microsd card slot for storing your music, and a audio jack for headphones or output to speakers! Also has a cool case I made along with it!. (Being displayed at Opensauce!)
 
 
-**DESCRIPTION OF THE INTERNALS:**
-My Saxplayer is a bare bones PCB that houses a ESP32-WROOM for the microcontroller, 3 MX-Style keyboard switches for navigation, a rotary encoder switch for adjusting the volume with a knob, a microsd card slot for storing your music, and a audio jack for headphones.
 
 
 
@@ -46,6 +44,10 @@ I had to do a lot of research and asking in slack, and the problem was eventuall
 Apparently, on the oleds I used, the pins were GND, VCC, SCL, then SDA. The footprint I used swapped the GND and VCC, causing the oled to be totally
 fried and start to heat up.
 
+<img width="922" height="582" alt="PNG image" src="https://github.com/user-attachments/assets/52c743f3-ec40-4ce8-aaef-82f263de80bd" />
+<img width="1100" height="1100" alt="61C2CYciYYL _SL1100_" src="https://github.com/user-attachments/assets/ca42c885-f526-4c5b-a7ec-3d8617a5087b" />
+<img width="327" height="147" alt="PNG image 2" src="https://github.com/user-attachments/assets/e99069fa-47b6-4c85-8d82-55e7dbf603dd" />
+
 I then ordered a new ESP32 and OLED since I tried for hours trying to desolder the ESP32 to no avail. The OLED I bought had the VCC and then GND so I wouldn't have to
 solder any wires or put additonal stuff on my board.
 
@@ -54,12 +56,18 @@ On the experimental board, for the rotary encoder, I put 0 ohm resistors to act 
 capacitors could be blocking signal/not having a good enough signal to detect an input from the rotary.
 
 When the new ESP32 and OLED arrived, I soldered it, made some test code, and everything worked!!!
+<img width="4032" height="3024" alt="IMG_7597" src="https://github.com/user-attachments/assets/fc649b94-3270-4d12-b308-1a2973ea1a00" />
+<img width="4032" height="3024" alt="IMG_7595" src="https://github.com/user-attachments/assets/aa818ce8-be29-4b30-b15e-270826e89c5c" />
 
 I had to adjust the code a lot, since there was a lot of noise, mainly electrical, and got it to reduce a ton. The other issues were the pitch, so I had to also tweak some things
 so that the sound would come out right and less garbled. I figured out that plugging this into a speaker worked best, which is perfect for Opensauce to display!
 
 On the display, I had a setting where it would show an equalizer with the song title and artist, and the buttons were so that if you held the back/forwards button, it would
 accelerate in the song, like an iPod.
+<img width="964" height="642" alt="IMG_7605" src="https://github.com/user-attachments/assets/3fa727a0-2a7f-4bab-a598-e8427093abb8" />
+<img width="853" height="629" alt="IMG_7606" src="https://github.com/user-attachments/assets/3e9da101-01cb-4547-9f85-e2e7c35e1fbf" />
+<img width="867" height="674" alt="IMG_7604" src="https://github.com/user-attachments/assets/2e332109-bb66-4035-b6c7-70f2e6a27d38" />
+
 
 Lastly, I also added some keycaps from my keyboard to give more color, swabbed the flux away to be cleaner, got an SD card with songs, and did the demo!
 
@@ -67,6 +75,10 @@ Throughout my boards, I got better at soldering and managed to make it super cle
 
 I ditched the case, at least mostly. I had to saw off some parts since it didn't fit (and I am still learning Fusion). But I really like the designs I put on the case, so I guess
 I will take it with me anyhow.
+<img width="4032" height="3024" alt="IMG_7608" src="https://github.com/user-attachments/assets/f6920fcc-7ab5-439f-b25c-59f105db625e" />
+<img width="3024" height="4032" alt="IMG_7609" src="https://github.com/user-attachments/assets/9655b063-0bd2-44d5-95a6-5ba2435475d2" />
+<img width="3024" height="4032" alt="IMG_7610" src="https://github.com/user-attachments/assets/84cbc88b-516c-4968-b196-b6b496979a41" />
+<img width="3024" height="4032" alt="IMG_7611" src="https://github.com/user-attachments/assets/a79b16d5-6cee-4ae0-83de-94e274c2ab4a" />
 
 
 
