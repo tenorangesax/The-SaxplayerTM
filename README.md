@@ -42,7 +42,7 @@ My Saxplayer is a device that houses a ESP32E for the microcontroller, a OLED di
 
 # 7/11/2026 12 PM - Made the final case
 
-_Time spent: 8h_
+_Time spent: 9.3h_
 
 All the parts finally arrived from JLCPCB, so I got started on working!
 I originally had a board with my fully assembled components, but the thing was, my display wasn't working and my rotary encoder wasn't working.
