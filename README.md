@@ -1,267 +1,59 @@
-# The-SaxplayerTM
-My Saxplayer is a device that houses a ESP32E for the microcontroller, a OLED display to see what songs are playing, 3 MX-Style keyboard switches for navigation of songs, a rotary encoder switch for adjusting the volume and navigating menus, a microsd card slot for storing your music, and a audio jack for headphones or output to speakers! Also has a cool case I made along with it!. (Being displayed at Opensauce!)
+# Saxplayer™ Firmware (MicroPython)
 
+WAV music player firmware for the Saxplayer board (ESP32-WROOM, SH1106/SSD1306 OLED, microSD, 3 MX switches, EC11 encoder, 3.5mm jack driven by the ESP32's internal DACs).
 
+## Why WAV and not MP3?
 
+The ESP32-WROOM has no hardware audio decoder, and MicroPython is too slow to decode MP3 in real time. Uncompressed WAV streams straight from the SD card to the DACs with almost no CPU work. Convert your music once on your computer (one command, below) and it plays fine.
 
+## Flashing
 
-**THE FINAL SHOTS:**
-<img width="4032" height="2268" alt="IMG_7619" src="https://github.com/user-attachments/assets/bab5919d-efd9-4b22-bcc2-12ba70afb4b0" />
-<img width="4032" height="3024" alt="IMG_7595" src="https://github.com/user-attachments/assets/30426ff0-7d85-4bc5-9808-19219b1ca089" />
+1. Install [esptool](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html) and grab the latest ESP32 MicroPython firmware from micropython.org/download/ESP32_GENERIC/
+2. Flash it (adjust the port):
+   ```
+   esptool.py --chip esp32 --port /dev/tty.usbserial-XXXX erase_flash
+   esptool.py --chip esp32 --port /dev/tty.usbserial-XXXX write_flash -z 0x1000 ESP32_GENERIC-*.bin
+   ```
+3. Copy this Firmware folder's `.py` files to the board with [mpremote](https://docs.micropython.org/en/latest/reference/mpremote.html):
+   ```
+   mpremote cp boot.py config.py inputs.py wavplayer.py main.py :
+   mpremote mkdir lib
+   mpremote cp lib/sh1106.py lib/ssd1306.py :lib/
+   mpremote reset
+   ```
 
-**THE CASE:**
-<img width="4032" height="3024" alt="IMG_7608" src="https://github.com/user-attachments/assets/d6ae411d-3c38-40d0-881a-2d34f3bd525c" />
-<img width="4032" height="3024" alt="IMG_7610" src="https://github.com/user-attachments/assets/aff37b80-329e-4cb6-a3d7-38d3ef903ceb" />
-<img width="4032" height="3024" alt="IMG_7609" src="https://github.com/user-attachments/assets/9b456798-aa5f-4981-ba60-3ec102602922" />
-<img width="4032" height="3024" alt="IMG_7611" src="https://github.com/user-attachments/assets/392345e9-fb50-4443-a314-a786cc917bda" />
+## Preparing music
 
+Convert anything (MP3, FLAC, ...) to player-friendly WAV with ffmpeg, then drop it on the SD card (FAT32):
 
-**3D VIEWER:**
-<img width="1024" height="582" alt="Back_final" src="https://github.com/user-attachments/assets/ac5ef5e7-c8e6-4056-918b-5217ff58426f" />
-<img width="1024" height="582" alt="Front_Final" src="https://github.com/user-attachments/assets/44d0cc21-26c2-4791-9414-cd3ce01752a8" />
+```
+ffmpeg -i song.mp3 -ac 1 -ar 16000 -sample_fmt s16 song.wav
+```
 
+Mono, 16 kHz, 16-bit is the sweet spot. If playback stutters, drop to `-ar 8000`. 8-bit files (`-sample_fmt u8` → use `-acodec pcm_u8`) also work and decode faster. Stereo files play left-channel-only.
 
-**THE SCHEMATIC:**
-<img width="1479" height="946" alt="schematic" src="https://github.com/user-attachments/assets/cb34f801-f0a0-4f20-907a-e024a205919c" />
+## Controls
 
-**PCB EDITOR:**
-<img width="1599" height="737" alt="Screenshot 2026-07-05 at 7 09 38 PM" src="https://github.com/user-attachments/assets/a65f455c-3dc8-4be4-9b36-e9bb97b1a639" />
+| Input | Browser | Now playing |
+|---|---|---|
+| SW1 (up) | move up | previous track |
+| SW3 (down) | move down | next track |
+| SW2 (select) | play | play / pause |
+| Encoder turn | volume | volume |
+| Encoder push | rescan SD | stop, back to browser |
 
+## Files
 
-**CASE MODELING:**
-<img width="1285" height="663" alt="Screenshot 2026-04-18 at 4 40 20 PM" src="https://github.com/user-attachments/assets/b339ce5d-e74f-4c7a-9b3f-5e3e41a5086f" />
-<img width="1115" height="701" alt="Screenshot 2026-04-18 at 4 41 53 PM" src="https://github.com/user-attachments/assets/90c0088d-9942-4e6f-b16a-170a50bcf6f0" />
-<img width="1115" height="701" alt="Screenshot 2026-04-18 at 4 41 45 PM" src="https://github.com/user-attachments/assets/dbeb5399-4b97-4662-b16c-1732b34e60ba" />
-<img width="1115" height="663" alt="Screenshot 2026-04-18 at 4 41 21 PM" src="https://github.com/user-attachments/assets/9a9e935e-7990-4103-b0f3-113f440e5df0" />
+- `config.py` — every pin assignment and tunable, matches the KiCad netlist
+- `inputs.py` — IRQ-driven buttons + quadrature encoder decoding
+- `wavplayer.py` — WAV parsing and DAC playback (viper-optimized conversion)
+- `main.py` — SD mount, file browser, now-playing UI
+- `lib/sh1106.py`, `lib/ssd1306.py` — OLED drivers (1.3" panels are usually SH1106; switch with `OLED_DRIVER` in config.py)
 
+## ⚠ Hardware errata (check before assembly!)
 
-[JOURNAL (1).md](https://github.com/user-attachments/files/29402573/JOURNAL.1.md)<!--
-  This journal is auto generated by Stasis.
--->
+Looking at the netlist, the rotary encoder's common pin (C) and switch return (S2) reach GND **only through capacitors C4/C5**. Capacitors block DC, so as designed the encoder can never actually pull GPIO13/14/27 low — turns and pushes won't register.
 
+Fix (either): bridge C4 and C5 with a solder blob / 0Ω resistor, or update the schematic so C and S2 tie directly to GND with the caps in parallel as debounce caps (that's the standard EC11 circuit).
 
-# 7/11/2026 12 PM - Finishing touches and submisson!
-
-_Time spent: 9.3h_
-
-All the parts finally arrived from JLCPCB, so I got started on working!
-I originally had a board with my fully assembled components, but the thing was, my display wasn't working and my rotary encoder wasn't working.
-The display and the ESP32 kept getting very hot whenver I plugged in the board, and the rotary encoder wasn't reading signals right, not displaying
-the inputs given to it.
-
-I had to do a lot of research and asking in slack, and the problem was eventually found. 
-
-Apparently, on the oleds I used, the pins were GND, VCC, SCL, then SDA. The footprint I used swapped the GND and VCC, causing the oled to be totally
-fried and start to heat up.
-
-<img width="327" height="147" alt="PNG image 2" src="https://github.com/user-attachments/assets/e99069fa-47b6-4c85-8d82-55e7dbf603dd" />
-
-<img width="922" height="582" alt="PNG image" src="https://github.com/user-attachments/assets/52c743f3-ec40-4ce8-aaef-82f263de80bd" />
-
-I then ordered a new ESP32 and OLED since I tried for hours trying to desolder the ESP32 to no avail. I put an atrocious amount of flux and used wick but couldn't salvage it.
-<img width="1251" height="1213" alt="IMG_7578" src="https://github.com/user-attachments/assets/4959cd17-b52d-4280-8163-ca42ea4c7997" />
-
-
-The OLED I bought had the VCC and then GND so I wouldn't have to
-solder any wires or put additonal stuff on my board.
-<img width="1100" height="1100" alt="61C2CYciYYL _SL1100_" src="https://github.com/user-attachments/assets/ca42c885-f526-4c5b-a7ec-3d8617a5087b" />
-
-I made two boards in the meantime, one with the stuff that I knew worked(the switches, headphone jack and SD card), and one with more experimental things.
-On the experimental board, for the rotary encoder, I put 0 ohm resistors to act as a wire instead of the capacitors, since I researched and found out that the
-capacitors could be blocking signal/not having a good enough signal to detect an input from the rotary.
-
-When the new ESP32 and OLED arrived, I soldered it, made some test code, and everything worked!!!
-<img width="4032" height="3024" alt="IMG_7597" src="https://github.com/user-attachments/assets/fc649b94-3270-4d12-b308-1a2973ea1a00" />
-<img width="4032" height="3024" alt="IMG_7595" src="https://github.com/user-attachments/assets/aa818ce8-be29-4b30-b15e-270826e89c5c" />
-
-I had to adjust the code a lot, since there was a lot of noise, mainly electrical, and got it to reduce a ton. The other issues were the pitch, so I had to also tweak some things
-so that the sound would come out right and less garbled. I figured out that plugging this into a speaker worked best, which is perfect for Opensauce to display!
-
-On the display, I had a setting where it would show an equalizer with the song title and artist, and the buttons were so that if you held the back/forwards button, it would
-accelerate in the song, like an iPod.
-<img width="964" height="642" alt="IMG_7605" src="https://github.com/user-attachments/assets/3fa727a0-2a7f-4bab-a598-e8427093abb8" />
-<img width="853" height="629" alt="IMG_7606" src="https://github.com/user-attachments/assets/3e9da101-01cb-4547-9f85-e2e7c35e1fbf" />
-<img width="867" height="674" alt="IMG_7604" src="https://github.com/user-attachments/assets/2e332109-bb66-4035-b6c7-70f2e6a27d38" />
-
-
-Lastly, I also added some keycaps from my keyboard to give more color, swabbed the flux away to be cleaner, got an SD card with songs, and did the demo!
-
-Throughout my boards, I got better at soldering and managed to make it super clean compared to my first board for this project, which is super great!
-
-I ditched the case, at least mostly. I had to saw off some parts since it didn't fit (and I am still learning Fusion). But I really like the designs I put on the case, so I guess
-I will take it with me anyhow.
-<img width="4032" height="3024" alt="IMG_7608" src="https://github.com/user-attachments/assets/f6920fcc-7ab5-439f-b25c-59f105db625e" />
-<img width="3024" height="4032" alt="IMG_7609" src="https://github.com/user-attachments/assets/9655b063-0bd2-44d5-95a6-5ba2435475d2" />
-<img width="3024" height="4032" alt="IMG_7610" src="https://github.com/user-attachments/assets/84cbc88b-516c-4968-b196-b6b496979a41" />
-<img width="3024" height="4032" alt="IMG_7611" src="https://github.com/user-attachments/assets/a79b16d5-6cee-4ae0-83de-94e274c2ab4a" />
-
-
-
-# 4/18/2026 9 PM - Made the final case
-
-_Time spent: 2h_
-
-I did a lot of fusion360 tutorials today so I could make the case.
-
-I learned a lot and did a lot of researching.
-I updated the pictures tab of my github and the readme to have the pictures, and made a new directory for the cad files.
-![Screenshot 2026-04-18 at 4.53.11 PM](https://stasis.hackclub-assets.com/images/1776549196140-24p14m.png)
-
-
-Here are the finals and the in-progress views.
-
-![Saxplayer_Case_Full](https://stasis.hackclub-assets.com/images/1776549119810-eirsdf.png)
-
-![Uploading Saxplayer_Case_Top.png...](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-
-![Uploading Saxplayer_Case_Bottom.png...](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-
-![Uploading Saxplayer_Case_Alt_View.png...](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-
-![Uploading old_case.png...](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-![shot of some workings of the case](https://stasis.hackclub-assets.com/images/1776549291042-xi11xy.png)
-
-![Screenshot 2026-04-18 at 4.53.29 PM](https://stasis.hackclub-assets.com/images/1776549297546-fwwhxj.png)
-
-![image](https://stasis.hackclub-assets.com/images/1776549196140-24p14m.png)
-![image](https://stasis.hackclub-assets.com/images/1776549119810-eirsdf.png)
-![image](https://stasis.hackclub-assets.com/images/1776549291042-xi11xy.png)
-![image](https://stasis.hackclub-assets.com/images/1776549297546-fwwhxj.png)
-
-# 3/30/2026 12 AM - JLCPCB order in cart + firmware fix + github update
-
-_Time spent: 3.25h_
-
-Today I put the pcb in my cart, and I had to get the sd card slot and the headphone jack assembled because it is really hard for SMD components. Everything else I'll be assembling and soldering myself. I also tweaked the firmware a bit, and updated the github.
-
-![Screenshot 2026-03-29 at 7.03.44 PM](https://stasis.hackclub-assets.com/images/1774829337931-gpvce3.png)
-
-![Screenshot 2026-03-29 at 7.03.53 PM](https://stasis.hackclub-assets.com/images/1774829337971-03nnlz.png)
-
-![Screenshot 2026-03-29 at 7.05.39 PM](https://stasis.hackclub-assets.com/images/1774829338154-ejzoll.png)
-
-![Screenshot 2026-03-29 at 7.06.39 PM](https://stasis.hackclub-assets.com/images/1774829338204-0ezney.png)
-
-![Screenshot 2026-03-29 at 7.11.17 PM](https://stasis.hackclub-assets.com/images/1774829482509-jmr8vo.png)
-
-![Screenshot 2026-03-29 at 7.29.28 PM](https://stasis.hackclub-assets.com/images/1774830572404-ec7674.png)
-
-![image](https://stasis.hackclub-assets.com/images/1774829337931-gpvce3.png)
-![image](https://stasis.hackclub-assets.com/images/1774829337971-03nnlz.png)
-![image](https://stasis.hackclub-assets.com/images/1774829338154-ejzoll.png)
-![image](https://stasis.hackclub-assets.com/images/1774829338204-0ezney.png)
-![image](https://stasis.hackclub-assets.com/images/1774829482509-jmr8vo.png)
-![image](https://stasis.hackclub-assets.com/images/1774830572404-ec7674.png)
-
-# 3/29/2026 5 AM - Revamped everything, basically had to restart everything ground up
-
-_Time spent: 6.716666666666667h_
-
-Today I decided that I needed to have more ports to be able to support microsd card slot and other stuff, so I removed the seed and researched about the ESP32 Wroom, then searched for the foot + sym, adjusted the headphone jack and did a lot of learning on that, to be able to have a mostly clear sound with the capacitors and stuff. I did more research on how the sd card slot works and had to find a footprint for the symbol, then checked which pins on the ESP32 had specific functions for different things, and eventually made the schematic. I redid the design for the pcb, going for a more longer rectangle kind of look, adding the SD card and moving the headphone jack to the right side to be accessible, keeping the same 3 keys under the oled and having the ESP on the left for access and put the rotary on the top right. I used the dead space for the capacitors and resistors, wired everything up, and redid the front and back silkscreen. There was a lot to it, but I think I can raise the complexity a little for this project and have slightly advanced beginners/intermediate people be more comfortable with an ESP32 instead of just the xiao seeed esp32 since literally all other tutorials use that. I attached the new iterations and the old iterations.
-![Screenshot 2026-03-28 at 12.09.18 AM](https://stasis.hackclub-assets.com/images/1774761322209-15ba7j.png)
-
-![Screenshot 2026-03-28 at 11.59.10 PM](https://stasis.hackclub-assets.com/images/1774761335243-e72grz.png)
-
-![Screenshot 2026-03-28 at 11.59.04 PM](https://stasis.hackclub-assets.com/images/1774761339858-57vbbz.png)
-
-![Screenshot 2026-03-28 at 11.05.54 PM](https://stasis.hackclub-assets.com/images/1774761348804-mx1udc.png)
-
-![Screenshot 2026-03-28 at 10.25.16 PM](https://stasis.hackclub-assets.com/images/1774761356634-67two1.png)
-
-![Screenshot 2026-03-28 at 11.59.49 PM](https://stasis.hackclub-assets.com/images/1774761372218-co8xvg.png)
-
-![Screenshot 2026-03-28 at 11.59.33 PM](https://stasis.hackclub-assets.com/images/1774761375562-1tjdd1.png)
-
-![Screenshot 2026-03-28 at 2.34.35 AM](https://stasis.hackclub-assets.com/images/1774761384013-omc4e1.png)
-
-![Screenshot 2026-03-28 at 2.34.30 AM](https://stasis.hackclub-assets.com/images/1774761387235-rwvoey.png)
-
-![Screenshot 2026-03-28 at 2.03.27 AM](https://stasis.hackclub-assets.com/images/1774761390106-8a5l9t.png)
-
-![image](https://stasis.hackclub-assets.com/images/1774761322209-15ba7j.png)
-![image](https://stasis.hackclub-assets.com/images/1774761335243-e72grz.png)
-![image](https://stasis.hackclub-assets.com/images/1774761339858-57vbbz.png)
-![image](https://stasis.hackclub-assets.com/images/1774761348804-mx1udc.png)
-![image](https://stasis.hackclub-assets.com/images/1774761356634-67two1.png)
-![image](https://stasis.hackclub-assets.com/images/1774761372218-co8xvg.png)
-![image](https://stasis.hackclub-assets.com/images/1774761375562-1tjdd1.png)
-![image](https://stasis.hackclub-assets.com/images/1774761384013-omc4e1.png)
-![image](https://stasis.hackclub-assets.com/images/1774761387235-rwvoey.png)
-![image](https://stasis.hackclub-assets.com/images/1774761390106-8a5l9t.png)
-
-# 3/27/2026 2 AM - firmware + full git finished
-
-_Time spent: 2.75h_
-
-I finished sorting all the files into the github today, and did all the micropython firmware for the mp3 player/streamer. I had to search a lot online how to program in this and to configure the stuff, but i think it mostly works. I might have to change the firmware if something goes wrong when i actually get the board, but for now, this is good.
-
-attached are some previews (check the actual git for the stuff)
-![Screenshot 2026-03-26 at 9.24.29 PM](https://stasis.hackclub-assets.com/images/1774578272960-41cug8.png)
-
-![Screenshot 2026-03-26 at 9.24.45 PM](https://stasis.hackclub-assets.com/images/1774578289191-fxgq9h.png)
-
-![image](https://stasis.hackclub-assets.com/images/1774578272960-41cug8.png)
-![image](https://stasis.hackclub-assets.com/images/1774578289191-fxgq9h.png)
-
-# 3/26/2026 4 AM - Final Touches and silkscreen
-
-_Time spent: 3h_
-
-I did the finishing touches to the board and did all the silkscreen stuff and finished off the errors.
-
-here are the views:
-![Screenshot 2026-03-25 at 11.23.04 PM](https://stasis.hackclub-assets.com/images/1774500092245-a97wyb.png)
-
-![Screenshot 2026-03-25 at 11.40.28 PM](https://stasis.hackclub-assets.com/images/1774500092306-z8plzz.png)
-
-![Screenshot 2026-03-25 at 11.40.34 PM](https://stasis.hackclub-assets.com/images/1774500092444-xrpudl.png)
-
-![Screenshot 2026-03-25 at 11.40.43 PM](https://stasis.hackclub-assets.com/images/1774500092515-3xekcl.png)
-
-![image](https://stasis.hackclub-assets.com/images/1774500092245-a97wyb.png)
-![image](https://stasis.hackclub-assets.com/images/1774500092306-z8plzz.png)
-![image](https://stasis.hackclub-assets.com/images/1774500092444-xrpudl.png)
-![image](https://stasis.hackclub-assets.com/images/1774500092515-3xekcl.png)
-
-# 3/26/2026 2 AM - PCB + SCHEMATIC REVISONS
-
-_Time spent: 3.25h_
-
-Today I revised and fixed the entire schematic and pcb, i was using a totally wrong symbol and footprint and needed to redo the design to be a little more better looking, since the last one was a little clunky.
-I had to search a lot about the OLED displays and find one that suits this project. i then did standard testing to see if any errors popped up.
-
-attached are some previews
-
-![Screenshot 2026-03-25 at 9.42.52 PM](https://stasis.hackclub-assets.com/images/1774492973753-qq3eja.png)
-
-![Screenshot 2026-03-25 at 9.42.59 PM](https://stasis.hackclub-assets.com/images/1774492981118-hoeboz.png)
-
-![Screenshot 2026-03-25 at 9.44.36 PM](https://stasis.hackclub-assets.com/images/1774493077597-w40wkm.png)
-
-![Screenshot 2026-03-25 at 9.44.44 PM](https://stasis.hackclub-assets.com/images/1774493085809-biriw6.png)
-
-![image](https://stasis.hackclub-assets.com/images/1774492973753-qq3eja.png)
-![image](https://stasis.hackclub-assets.com/images/1774492981118-hoeboz.png)
-![image](https://stasis.hackclub-assets.com/images/1774493077597-w40wkm.png)
-![image](https://stasis.hackclub-assets.com/images/1774493085809-biriw6.png)
-
-# 3/19/2026 11 PM - some pcb and some schematic
-
-_Time spent: 3.5h_
-
-i made the schematic, troubleshooted some stuff, and made the pcb.
-
-i think i need to get the footprint and maybe change the oled since i just realized its wrong.
-
-and also maybe the headphone jack.
-
-i had to do so much research on the stuff and went through a lot of troubleshooting and errors;
-
-heres the stuff:
-![Screenshot 2026-03-19 at 6.29.21 PM](https://stasis.hackclub-assets.com/images/1773963098097-kpyirh.png)
-
-![Screenshot 2026-03-19 at 6.29.41 PM](https://stasis.hackclub-assets.com/images/1773963098162-nnq8wc.png)
-
-![image](https://stasis.hackclub-assets.com/images/1773963098097-kpyirh.png)
-![image](https://stasis.hackclub-assets.com/images/1773963098162-nnq8wc.png)
-
+Also note: audio from the internal 8-bit DAC into headphones is lo-fi and quiet-ish by design — fine for a demo/tutorial board. Keep volume moderate; there's no amplifier on the output.
