@@ -35,16 +35,15 @@ The Saxplayer™ is a device that houses a ESP32E for the microcontroller, a OLE
 
 **BOM:**
 
-| Id | Designator | Footprint | Quantity | Comment | Supplier and ref |
-|---:|---|---|---:|---|---|
-| 1 | SW2,SW1,SW3 | SW_Cherry_MX_1.00u_PCB | 3 | SW_Push |  |
-| 2 | J1 | J_SD_Card-micro_socket_A | 1 | Micro_SD_Card |  |
-| 3 | DS1 | LCD_OLED_128X64_1.3_I2C | 1 | OLED_128X64_1.3_I2C |  |
-| 4 | R6,R5,R1,R2 | R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | 4 | 10kΩ |  |
-| 5 | J2 | Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal | 1 | AudioJack3 |  |
-| 6 | C3 | CP_Radial_D5.0mm_P2.00mm | 1 | 10µF |  |
-| 7 | SW4 | RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm | 1 | RotaryEncoder_Switch |  |
-| 8 | C5,C4 | C_Disc_D3.0mm_W1.6mm_P2.50mm | 2 | 0.1uF |  |
-| 9 | C2,C1 | C_Disc_D5.0mm_W2.5mm_P5.00mm | 2 | 10µF |  |
-| 10 | R3,R4 | R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | 2 | 4.7kΩ |  |
-| 11 | U1 | ESP32-DevKitC | 1 | ESP32-DevKitC |  |
+Item name,Quant,Single price,Link to purchase,Description
+Cherry MX-compatible PCB switch,3,$0.40,https://mechanicalkeyboards.com/collections/cherry-switches,Keyboard switch for SW1/SW2/SW3
+Micro SD card socket,1,$2.05,https://www.ebay.com/itm/223488992237,MicroSD push-push SMT socket for J1
+1.3in 128x64 I2C OLED display,1,$5.27,https://www.ebay.com/itm/177531293019,Monochrome OLED display for DS1
+10k resistor,4,$0.02,https://www.digikey.com/en/products/filter/resistors/52,Through-hole resistor for R1/R2/R5/R6
+3.5mm audio jack,1,$1.52,https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/SJ2-35954A-SMT-TR/6619576,Right-angle SMT audio jack for J2
+10uF capacitor,1,$0.10,https://www.digikey.com/en/products/filter/aluminum-electrolytic-capacitors/58,Polarized capacitor for C3
+Rotary encoder with push switch,1,$4.90,https://www.mouser.com/en/c/electromechanical/encoders/?m=Alps%20Alpine&series=EC11,Rotary input control for SW4
+0.1uF capacitor,2,$0.05,https://www.digikey.com/en/products/filter/ceramic-capacitors/60,Decoupling capacitors for C4/C5
+10uF capacitor,2,$0.10,https://www.digikey.com/en/products/filter/ceramic-capacitors/60,Capacitors for C1/C2
+4.7k resistor,2,$0.02,https://www.digikey.com/en/products/filter/resistors/52,Pull-up / signal resistors for R3/R4
+ESP32 DevKitC board,1,$10.00,https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32UE/12091813,Main controller board for U1
