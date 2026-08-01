@@ -35,15 +35,18 @@ The Saxplayer™ is a device that houses a ESP32E for the microcontroller, a OLE
 
 **BOM:**
 
-Item name,Quant,Single price,Link to purchase,Description
-Cherry MX-compatible PCB switch,3,$0.40,https://mechanicalkeyboards.com/collections/cherry-switches,Keyboard switch for SW1/SW2/SW3
-Micro SD card socket,1,$2.05,https://www.ebay.com/itm/223488992237,MicroSD push-push SMT socket for J1
-1.3in 128x64 I2C OLED display,1,$5.27,https://www.ebay.com/itm/177531293019,Monochrome OLED display for DS1
-10k resistor,4,$0.02,https://www.digikey.com/en/products/filter/resistors/52,Through-hole resistor for R1/R2/R5/R6
-3.5mm audio jack,1,$1.52,https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/SJ2-35954A-SMT-TR/6619576,Right-angle SMT audio jack for J2
-10uF capacitor,1,$0.10,https://www.digikey.com/en/products/filter/aluminum-electrolytic-capacitors/58,Polarized capacitor for C3
-Rotary encoder with push switch,1,$4.90,https://www.mouser.com/en/c/electromechanical/encoders/?m=Alps%20Alpine&series=EC11,Rotary input control for SW4
-0.1uF capacitor,2,$0.05,https://www.digikey.com/en/products/filter/ceramic-capacitors/60,Decoupling capacitors for C4/C5
-10uF capacitor,2,$0.10,https://www.digikey.com/en/products/filter/ceramic-capacitors/60,Capacitors for C1/C2
-4.7k resistor,2,$0.02,https://www.digikey.com/en/products/filter/resistors/52,Pull-up / signal resistors for R3/R4
-ESP32 DevKitC board,1,$10.00,https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32UE/12091813,Main controller board for U1
+
+| Item name | Quantity | Single price | Link to purchase | Description |
+|---|---:|---:|---|---|
+| Cherry MX-compatible PCB switch | 3 | $0.40 | https://mechanicalkeyboards.com/collections/cherry-switches | Keyboard switch for the 3 keys |
+| Micro SD card socket | 1 | $2.05 | https://www.ebay.com/itm/223488992237 | MicroSD push-push SMT socket |
+| 1.3in 128x64 I2C OLED display | 1 | $5.27 | https://www.ebay.com/itm/177531293019 | Monochrome OLED display |
+| 10k resistor | 4 | $0.02 | https://www.digikey.com/en/products/filter/resistors/52 | Through-hole resistor |
+| 3.5mm audio jack | 1 | $1.52 | https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/SJ2-35954A-SMT-TR/6619576 | Right-angle SMT audio jack |
+| 10uF capacitor | 1 | $0.10 | https://www.digikey.com/en/products/filter/aluminum-electrolytic-capacitors/58 | Polarized capacitor |
+| Rotary encoder with push switch | 1 | $4.90 | https://www.mouser.com/en/c/electromechanical/encoders/?m=Alps%20Alpine&series=EC11 | Rotary input control |
+| 0.1uF capacitor | 2 | $0.05 | https://www.digikey.com/en/products/filter/ceramic-capacitors/60 | Decoupling capacitor |
+| 10uF capacitor | 2 | $0.10 | https://www.digikey.com/en/products/filter/ceramic-capacitors/60 | Capacitor |
+| 4.7k resistor | 2 | $0.02 | https://www.digikey.com/en/products/filter/resistors/52 | Pull-up / signal resistor |
+| ESP32 DevKitC board | 1 | $10.00 | https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32UE/12091813 | Main controller board |
+
