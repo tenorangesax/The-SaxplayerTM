@@ -35,18 +35,17 @@ The Saxplayer™ is a device that houses a ESP32E for the microcontroller, a OLE
 
 **BOM:**
 
-
 | Item name | Quantity | Single price | Link to purchase | Description |
 |---|---:|---:|---|---|
-| Cherry MX-compatible PCB switch | 3 | $0.40 | https://mechanicalkeyboards.com/collections/cherry-switches | Keyboard switch for the 3 keys |
-| Micro SD card socket | 1 | $2.05 | https://www.ebay.com/itm/223488992237 | MicroSD push-push SMT socket |
-| 1.3in 128x64 I2C OLED display | 1 | $5.27 | https://www.ebay.com/itm/177531293019 | Monochrome OLED display |
-| 10k resistor | 4 | $0.02 | https://www.digikey.com/en/products/filter/resistors/52 | Through-hole resistor |
-| 3.5mm audio jack | 1 | $1.52 | https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/SJ2-35954A-SMT-TR/6619576 | Right-angle SMT audio jack |
-| 10uF capacitor | 1 | $0.10 | https://www.digikey.com/en/products/filter/aluminum-electrolytic-capacitors/58 | Polarized capacitor |
-| Rotary encoder with push switch | 1 | $4.90 | https://www.mouser.com/en/c/electromechanical/encoders/?m=Alps%20Alpine&series=EC11 | Rotary input control |
-| 0.1uF capacitor | 2 | $0.05 | https://www.digikey.com/en/products/filter/ceramic-capacitors/60 | Decoupling capacitor |
-| 10uF capacitor | 2 | $0.10 | https://www.digikey.com/en/products/filter/ceramic-capacitors/60 | Capacitor |
-| 4.7k resistor | 2 | $0.02 | https://www.digikey.com/en/products/filter/resistors/52 | Pull-up / signal resistor |
-| ESP32 DevKitC board | 1 | $10.00 | https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32UE/12091813 | Main controller board |
+| Cherry MX-compatible PCB switch | 3 | $0.40 | [MechanicalKeyboards](https://mechanicalkeyboards.com/products/cherry-mx-honey-silent-45g-tactile-pcb-mount-switch) | Keyboard switch for the 3 keys |
+| Micro SD card socket | 1 | $1.52 | PCBA assembled by JLCPCB | MicroSD push-push SMT socket |
+| 1.3in 128x64 I2C OLED display | 1 | $5.27 | [Amazon](https://www.amazon.com/JAMHER-Display-Self-Luminous-Projects-Raspberry/dp/B0F3D2ZQZ4?th=1) | Monochrome OLED display |
+| 10k resistor | 4 | $0.02 | [Amazon](https://www.amazon.com/LuminologyPro-1000-Piece-Resistor-25-Value-1%CE%A9-1M%CE%A9/dp/B0F4P352BB) | Through-hole resistor |
+| 3.5mm audio jack | 1 | $1.52 | [DigiKey](https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/SJ2-35954A-SMT-TR/6619576) | Right-angle SMT audio jack |
+| 10uF capacitor | 1 | $0.10 | [Amazon](https://www.amazon.com/Rubycon-Electrolytic-Capacitor-Aluminum-Capacitors/dp/B0F8C24M5R?s=industrial&th=1) | Polarized capacitor |
+| Rotary encoder with push switch | 1 | $4.90 | [Amazon](https://www.amazon.com/WWZMDiB-Encoder-Digital-Potentiometer-Arduino/dp/B0C6Q67V97?s=industrial) | Rotary input control |
+| 0.1uF capacitor | 2 | $0.05 | [Amazon](https://www.amazon.com/BOJACK-Capacitor-Multilayer-Monolithic-Assortment/dp/B085RDTCCV?th=1) | Decoupling capacitor |
+| 10uF capacitor | 2 | $0.10 | [Amazon](https://www.amazon.com/BOJACK-Capacitor-Multilayer-Monolithic-Assortment/dp/B085RDTCCV?th=1) | Capacitor |
+| 4.7k resistor | 2 | $0.02 | [Amazon](https://www.amazon.com/LuminologyPro-1000-Piece-Resistor-25-Value-1%CE%A9-1M%CE%A9/dp/B0F4P352BB) | Pull-up / signal resistor |
+| ESP32 DevKitC board | 1 | $10.00 | [Amazon](https://www.amazon.com/HiLetgo-ESP-WROOM-32-Development-Microcontroller-Integrated/dp/B0718T232Z?s=industrial) | Main controller board |
 
