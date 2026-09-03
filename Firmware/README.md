@@ -56,4 +56,3 @@ Looking at the netlist, the rotary encoder's common pin (C) and switch return (S
 
 Fix (either): bridge C4 and C5 with a solder blob / 0Ω resistor, or update the schematic so C and S2 tie directly to GND with the caps in parallel as debounce caps (that's the standard EC11 circuit).
 
-Also note: audio from the internal 8-bit DAC into headphones is lo-fi and quiet-ish by design — fine for a demo/tutorial board. Keep volume moderate; there's no amplifier on the output.
