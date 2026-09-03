@@ -56,9 +56,6 @@ The Saxplayer™ is a device that houses a ESP32E for the microcontroller, a OLE
 
 WAV music player firmware for the Saxplayer board (ESP32-WROOM, SH1106/SSD1306 OLED, microSD, 3 MX switches, EC11 encoder, 3.5mm jack driven by the ESP32's internal DACs).
 
-## Why WAV and not MP3?
-
-The ESP32-WROOM has no hardware audio decoder, and MicroPython is too slow to decode MP3 in real time. Uncompressed WAV streams straight from the SD card to the DACs with almost no CPU work. Convert your music once on your computer (one command, below) and it plays fine.
 
 ## Flashing
 
@@ -78,14 +75,13 @@ The ESP32-WROOM has no hardware audio decoder, and MicroPython is too slow to de
 
 ## Preparing music
 
-Convert anything (MP3, FLAC, ...) to player-friendly WAV with ffmpeg, then drop it on the SD card (FAT32):
+Convert anything (MP3, FLAC, ...) to player readable WAV with ffmpeg, then drop it on the SD card (FAT32):
 
 ```
 ffmpeg -i song.mp3 -ac 1 -ar 16000 -sample_fmt s16 song.wav
 ```
 
-Mono, 16 kHz, 16-bit is the sweet spot. If playback stutters, drop to `-ar 8000`. 8-bit files (`-sample_fmt u8` → use `-acodec pcm_u8`) also work and decode faster. Stereo files play left-channel-only.
-
+Mono, 16 kHz, 16-bit is prefered.
 ## Controls
 
 | Input | Browser | Now playing |
@@ -104,10 +100,10 @@ Mono, 16 kHz, 16-bit is the sweet spot. If playback stutters, drop to `-ar 8000`
 - `main.py` — SD mount, file browser, now-playing UI
 - `lib/sh1106.py`, `lib/ssd1306.py` — OLED drivers (1.3" panels are usually SH1106; switch with `OLED_DRIVER` in config.py)
 
-## ⚠ Hardware errata (check before assembly!)
+## Hardware errors (check before assembling!)
 
-Looking at the netlist, the rotary encoder's common pin (C) and switch return (S2) reach GND **only through capacitors C4/C5**. Capacitors block DC, so as designed the encoder can never actually pull GPIO13/14/27 low — turns and pushes won't register.
+The rotary encoder's common pin (C) and switch return (S2) reach GND **only through capacitors C4/C5**. Capacitors block DC, so as designed the encoder can never actually pull GPIO13/14/27 low, so turns and pushes won't register.
 
-Fix (either): bridge C4 and C5 with a solder blob / 0Ω resistor, or update the schematic so C and S2 tie directly to GND with the caps in parallel as debounce caps (that's the standard EC11 circuit).
+It would already be bridged for you by me, but if not, bridge C4 and C5 with a solder blob/0Ω resistor.
 
 
